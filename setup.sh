@@ -22,7 +22,7 @@ kx_dir="$HOME/.kx"
 mkdir -p "$kx_dir"
 
 # Download kx.sh from the GitHub repository
-kx_url="https://github.com/yavrumian/kx/raw/main/kx.sh"
+kx_url="https://github.com/yavrumian/kx/raw/master/kx.sh"
 kx_file="$kx_dir/kx.sh"
 
 if curl -fsSL "$kx_url" -o "$kx_file"; then
