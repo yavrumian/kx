@@ -1,4 +1,4 @@
-## kx function readme
+## kx: Easy shortcat for kubectl exec
 
 This Bash function simplifies running `kubectl exec` commands within pods managed by Kubernetes. It now includes support for specifying a namespace with the `-n` flag.
 
