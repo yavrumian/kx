@@ -1,7 +1,6 @@
 #!/bin/bash
 kx() {
 	# set -x
-	# Initialize namespace variable only if it's not already set
 	local pod=$1
 	local cmd=$2
 	if [[ $# -eq 1 || $# -eq 3 ]]; then
@@ -11,19 +10,15 @@ kx() {
 	namespace=""
 	OPTIND=1
 	args=$#
-	echo "number of args: $args"
 	# Parse arguments for namespace
 	if [[ $args -gt 2 ]]; then
 		OPTIND=$(($args - 1))
-		echo "in here"
 	fi
-	echo "opt $OPTIND"
 	while getopts "n:" opt; do
 		case $opt in
 		n)
 			namespace="-n $OPTARG"
 			args=$(($args - 2))
-			echo "# $args"
 			;;
 		\?)
 			echo "Invalid option: -$OPTARG" >&2
@@ -32,7 +27,7 @@ kx() {
 		esac
 	done
 	shift $((OPTIND - 1))
-	echo $namespace
+	echo "Namespace: $namespace"
 	# Check the number of parameters passed to the function
 	if [[ $args -eq 1 ]]; then
 		# Get the list of pods and use fzf to select one
@@ -45,9 +40,6 @@ kx() {
 			echo "No pod selected."
 		fi
 	elif [[ $args -eq 2 ]]; then
-		# local pod="$1"
-		# local cmd="$2"
-		echo "======= $# ======"
 		# Run the kx command with the provided pod and input command
 		kubectl exec $namespace $pod -it -- $cmd
 	else
