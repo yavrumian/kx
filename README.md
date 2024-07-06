@@ -5,7 +5,7 @@ This Bash function simplifies running `kubectl exec` commands within pods manage
 ### Functionality
 
  1.   Lists available pods within a specified namespace using `kubectl get pods`.
- 2.   Accepts zero, one or two arguments(`-n \<namespace>` is considered a flag, not an argument):
+ 2.   Accepts zero, one or two arguments(`-n <namespace>` is considered a flag, not an argument):
     --  **No arguments:** Prompts for a pod to select and an additional command to run within it.
     --   **One argument (command):** Prompts for a pod to select and runs the given command within it
     --   **Two arguments (pod name, command):** Runs the given command in the given pod
